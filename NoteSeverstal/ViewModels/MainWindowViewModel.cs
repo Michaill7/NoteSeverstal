@@ -30,6 +30,7 @@ namespace NoteSeverstal.ViewModels
         }
         private List<string> NoteNames;
 
+
         private List<string> actualNoteList;
         public List<string> ActualNoteList 
         {
@@ -71,20 +72,46 @@ namespace NoteSeverstal.ViewModels
             }
         }
 
+        
+        private string descriptionText;
+        public string DescriptionText 
+        {
+            get => descriptionText;
+            set 
+            {
+                descriptionText = value;
+                OnPropertyChange();
+            }        
+        }
+
+
+
         public void ShowText() 
         {
             string currentTextNoteFile = @"../../Models/NoteFiles/" + MainWindowViewModel.selectedListItemForCum+".docx";
             string a = new Document(currentTextNoteFile).GetText();
             CurrentText = a;
+            const string jsonListDir = @"../../Models/NoteList.json";
+            var Notes = JsonCustomer.Deserialization(jsonListDir);
+            foreach (var item in Notes)
+            {
+                if (item.NoteFileName == SelectedListItem)
+                {
+                    DescriptionText = item.NoteFileDescription;
+                    return;
+                }
+            }
+
         }
 
-        public ICommand Test { get; }
+        public ICommand OpenNoteWindow { get; }
         public ICommand AddTextToNote { get; }
-
+        public ICommand DeleteNote { get; }
         public MainWindowViewModel()
         {
-            Test = new LyambdaCommand(CreateNoteCommand.CreateNoteExecuted, CreateNoteCommand.CreateNoteCanExecrute);
+            OpenNoteWindow = new LyambdaCommand(OpenNoteNameWindow.OpenNoteNameWindowExecuted, OpenNoteNameWindow.OpenNoteNameWindowCanExecute);
             AddTextToNote = new LyambdaCommand(SaveNote.SaveNoteExecuted, SaveNote.SaveNoteCanExecute);
+            DeleteNote = new LyambdaCommand(DeleteNoteCommand.DeleteNoteCommandExecuted, DeleteNoteCommand.DeleteNoteCommandCanExecute);
             Foo();
         }
     }

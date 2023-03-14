@@ -19,8 +19,9 @@ namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
             var doc = new Document();
             var note1 = new Note 
             {
-                NoteFileName = "Test1",
-                NoteFileWay = MyDir
+                NoteFileName = OpenNoteNameWindowViewModel.NoteNameFor,
+                NoteFileWay = MyDir,
+                NoteFileDescription = OpenNoteNameWindowViewModel.NoteDescriptionFor
             };
             var Notes =JsonCustomer.Deserialization(jsonListDir);
             if (Notes == null)
@@ -35,7 +36,7 @@ namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
             }
             Notes.Add(note1);
             JsonCustomer.Serialization(Notes, jsonListDir);
-            doc.Save(MyDir + "Test1.docx");
+            doc.Save(MyDir + $"{OpenNoteNameWindowViewModel.NoteNameFor}.docx");
         }
 
 

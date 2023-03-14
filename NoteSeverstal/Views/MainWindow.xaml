@@ -21,14 +21,20 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35"/>
                     <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="35"/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Margin="3" Background="#fff" Command="{Binding Test}">
+                <Button Grid.Column="0" Margin="3" Background="#fff" Command="{Binding OpenNoteWindow}">
                     <Image Source="/Styles/Images/12.png" />
                 </Button>
-                <Button Grid.Column="1" Margin="3" Background="#fff" Command="{Binding AddTextToNote}"/>
+                <Button Grid.Column="1" Margin="3" Background="#fff" Command="{Binding AddTextToNote}">
+                    <Image/>
+                </Button>
+                <Button Grid.Column="2" Margin="3" Background="#fff" Command="{Binding DeleteNote}">
+                    
+                </Button>
             </Grid>
         </Border>
         <!--Grid который содержит освновую структуру программы(окна)-->
@@ -67,7 +73,7 @@
                             <TextBlock Text=" Описание" FontSize="12"/>
                         </Border>
                         <Border BorderBrush="#b2b2b8" BorderThickness="1" Grid.Row="1">
-                            <ListBox/>
+                            <TextBlock Background="White" Text="{Binding DescriptionText, UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                     </Grid>
                 </Grid>
