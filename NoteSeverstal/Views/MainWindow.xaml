@@ -28,7 +28,7 @@
                 <Button Grid.Column="0" Margin="3" Background="#fff" Command="{Binding Test}">
                     <Image Source="/Styles/Images/12.png" />
                 </Button>
-                <Button Grid.Column="1" Margin="3" Background="#fff"/>
+                <Button Grid.Column="1" Margin="3" Background="#fff" Command="{Binding AddTextToNote}"/>
             </Grid>
         </Border>
         <!--Grid который содержит освновую структуру программы(окна)-->
@@ -54,7 +54,7 @@
                             <TextBlock Text=" Заметки" FontSize="12"/>
                         </Border>
                         <Border BorderBrush="#b2b2b8" BorderThickness="1" Grid.Row="1">
-                            <ListBox ItemsSource="{Binding ActualNoteList, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListBox ItemsSource="{Binding ActualNoteList, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedListItem,UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                     </Grid>
                     <!--Grid окна Метки-->
@@ -64,7 +64,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Border Background="#b2b2b8" Height="15" VerticalAlignment="Top" Grid.Row="0">
-                            <TextBlock Text=" Метки" FontSize="12"/>
+                            <TextBlock Text=" Описание" FontSize="12"/>
                         </Border>
                         <Border BorderBrush="#b2b2b8" BorderThickness="1" Grid.Row="1">
                             <ListBox/>
@@ -84,7 +84,7 @@
                     <TextBlock Text=" Текст Заметки" FontSize="13"/>
                 </Border>
                 <Border BorderBrush="#b2b2b8" BorderThickness="1" Margin="0,17,0,0">
-                    <TextBox FontSize="15"/>
+                    <TextBox FontSize="15" Text="{Binding CurrentText, UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
                 </Grid>
                 <!--Панель инструментов-->
