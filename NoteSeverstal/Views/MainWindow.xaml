@@ -26,14 +26,29 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Margin="3" Background="#fff" Command="{Binding OpenNoteWindow}">
+                <Button Grid.Column="0" Margin="3" Background="#fff" Command="{Binding OpenNoteWindow}" >
                     <Image Source="/Styles/Images/14.png" />
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Добавить
+                        </ToolTip>
+                    </Button.ToolTip>
                 </Button>
                 <Button Grid.Column="1" Margin="3" Background="#fff" Command="{Binding AddTextToNote}">
                     <Image Source="/Styles/Images/12.png" />
+                    <Button.ToolTip>
+                    <ToolTip>
+                        Сохранить изменения
+                    </ToolTip>
+                    </Button.ToolTip>
                 </Button>
                 <Button Grid.Column="2" Margin="3" Background="#fff" Command="{Binding DeleteNote}">
                     <Image Source="/Styles/Images/15.png" Margin="1"/>
+                    <Button.ToolTip>
+                    <ToolTip>
+                        Удалить
+                    </ToolTip>
+                    </Button.ToolTip>
                 </Button>
             </Grid>
         </Border>
