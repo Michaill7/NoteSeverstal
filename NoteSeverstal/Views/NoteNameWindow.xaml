@@ -23,7 +23,8 @@
         <TextBlock Text="Название заметки:" Grid.Row="0" Margin="3" VerticalAlignment="Bottom"/>
         <TextBox Grid.Row="1" Margin="3" FontSize="18" Text="{Binding NoteName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock Text="Описание:" Margin="3" VerticalAlignment="Bottom" Grid.Row="3"/>
-        <TextBox Grid.Row="4" Margin="3" Text="{Binding NoteDescription, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Margin="3" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="{Binding NoteDescription, UpdateSourceTrigger=PropertyChanged}"/>
+        <!--Grid для разметки нижней части окна, содержащей кнопки-->
         <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>

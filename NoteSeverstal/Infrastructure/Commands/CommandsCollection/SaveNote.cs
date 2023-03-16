@@ -1,11 +1,5 @@
 ﻿using NoteSeverstal.ViewModels;
-using Aspose.Words;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.IO;
 
 namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
 {
@@ -13,16 +7,12 @@ namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
     {
         public static void SaveNoteExecuted(object o)
         {
-            string currentTextNoteFile = @"../../Models/NoteFiles/" + MainWindowViewModel.selectedListItemForCum+".docx";
-            var Doc = new Document(currentTextNoteFile);
-            var builder = new DocumentBuilder(Doc);
-            builder.Write(MainWindowViewModel.currentTextForCum);
-            Doc.Save(currentTextNoteFile);
-
+            string currentTextNoteFile = @"../../Models/NoteFiles/" + MainWindowViewModel.selectedListItemForTransfer + ".docx";
+            File.WriteAllText(currentTextNoteFile, MainWindowViewModel.currentTextForTransfer);
         }
         public static bool SaveNoteCanExecute(object o) 
         {
-            if (MainWindowViewModel.selectedListItemForCum != null)
+            if (MainWindowViewModel.selectedListItemForTransfer != null)
                 return true;
             else
                 return false;

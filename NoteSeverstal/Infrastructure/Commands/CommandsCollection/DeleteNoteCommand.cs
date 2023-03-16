@@ -1,13 +1,6 @@
-﻿using Aspose.Words;
-using NoteSeverstal.Models;
+﻿using NoteSeverstal.Models;
 using NoteSeverstal.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
 {
@@ -20,7 +13,7 @@ namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
             var currentItem = new Note();
             foreach (var item in Notes)
             {
-                if (!(item.NoteFileName == MainWindowViewModel.selectedListItemForCum))
+                if (!(item.NoteFileName == MainWindowViewModel.selectedListItemForTransfer))
                 {
                     continue;
                 }
@@ -28,14 +21,15 @@ namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
             }
             Notes.Remove(currentItem);
             JsonCustomer.Serialization(Notes, jsonListDir);
-            string currentTextNoteFile = @"../../Models/NoteFiles/" + MainWindowViewModel.selectedListItemForCum + ".docx";
+            string currentTextNoteFile = @"../../Models/NoteFiles/" + MainWindowViewModel.selectedListItemForTransfer + ".docx";
             File.Delete(currentTextNoteFile);
+            MainWindowViewModel.AddNoteDel();
 
         }
 
         public static bool DeleteNoteCommandCanExecute(object o) 
         {
-            if (MainWindowViewModel.selectedListItemForCum != null)
+            if (MainWindowViewModel.selectedListItemForTransfer != null)
                 return true;
             else
                 return false;

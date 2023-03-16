@@ -27,13 +27,13 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" Margin="3" Background="#fff" Command="{Binding OpenNoteWindow}">
-                    <Image Source="/Styles/Images/12.png" />
+                    <Image Source="/Styles/Images/14.png" />
                 </Button>
                 <Button Grid.Column="1" Margin="3" Background="#fff" Command="{Binding AddTextToNote}">
-                    <Image/>
+                    <Image Source="/Styles/Images/12.png" />
                 </Button>
                 <Button Grid.Column="2" Margin="3" Background="#fff" Command="{Binding DeleteNote}">
-                    
+                    <Image Source="/Styles/Images/15.png" Margin="1"/>
                 </Button>
             </Grid>
         </Border>
@@ -73,7 +73,7 @@
                             <TextBlock Text=" Описание" FontSize="12"/>
                         </Border>
                         <Border BorderBrush="#b2b2b8" BorderThickness="1" Grid.Row="1">
-                            <TextBlock Background="White" Text="{Binding DescriptionText, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Background="White" TextWrapping="Wrap" Text="{Binding DescriptionText, UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                     </Grid>
                 </Grid>
@@ -86,31 +86,12 @@
                 </Grid.RowDefinitions>
                 <!--Панель с текстом-->
                 <Grid Grid.Row="0">
-                <Border>
-                    <TextBlock Text=" Текст Заметки" FontSize="13"/>
-                </Border>
-                <Border BorderBrush="#b2b2b8" BorderThickness="1" Margin="0,17,0,0">
-                    <TextBox FontSize="15" Text="{Binding CurrentText, UpdateSourceTrigger=PropertyChanged}"/>
-                </Border>
-                </Grid>
-                <!--Панель инструментов-->
-                <Grid Grid.Row="1" Margin="0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Border BorderBrush="#b2b2b8" BorderThickness="2" Grid.Row="0" Background="White">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Width="25" Height="25" Margin="3" BorderThickness="0" Background="white"/>
-                            <Button Width="25" Height="25" Margin="3"/>
-                            <Button Width="25" Height="25" Margin="3"/>
-                            <Button Width="25" Height="25" Margin="3"/>
-                            <Button Width="25" Height="25" Margin="3"/>
-                            <Button Width="25" Height="25" Margin="3"/>
-                            <Button Width="25" Height="25" Margin="3"/>
-                        </StackPanel>
+                    <Border>
+                        <TextBlock Text=" Текст Заметки" FontSize="13"/>
                     </Border>
-                    
+                    <Border BorderBrush="#b2b2b8" BorderThickness="1" Margin="0,17,0,0">
+                        <TextBox FontSize="15" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="{Binding CurrentText, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Border>
                 </Grid>
             </Grid>
             

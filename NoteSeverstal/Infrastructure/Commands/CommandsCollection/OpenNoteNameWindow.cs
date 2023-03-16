@@ -1,17 +1,13 @@
 ﻿using NoteSeverstal.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
 {
     internal abstract class OpenNoteNameWindow
     {
+        public static NoteNameWindow NewNoteNameWindow;
         public static void OpenNoteNameWindowExecuted(object o) 
         {
-            var NewNoteNameWindow = new NoteNameWindow();
+            NewNoteNameWindow = new NoteNameWindow();
             NewNoteNameWindow.Show();
         }
 

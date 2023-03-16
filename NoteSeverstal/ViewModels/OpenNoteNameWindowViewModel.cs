@@ -1,21 +1,17 @@
 ﻿using NoteSeverstal.Infrastructure.Commands;
 using NoteSeverstal.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using NoteSeverstal.Infrastructure.Commands.CommandsCollection;
-using System.Windows;
 
 namespace NoteSeverstal.ViewModels
 {
     internal class OpenNoteNameWindowViewModel : ViewModel
     {
+        #region NoteNameProperty
         public static string NoteNameFor;
 
         private string noteName;
+        //Свойство названия новой заметки
         public string NoteName 
         {
             get => noteName;
@@ -26,10 +22,12 @@ namespace NoteSeverstal.ViewModels
                 OnPropertyChange();
             }
         }
+        #endregion NoteNameProperty
 
-
+        #region NoteDescriptionProperty
         public static string NoteDescriptionFor;
         private string noteDescription;
+        //Свойство описания новой заметки
         public string NoteDescription
         {
             get => noteDescription;
@@ -40,10 +38,14 @@ namespace NoteSeverstal.ViewModels
                 OnPropertyChange();
             }
         }
+        #endregion NoteDescriptionProperty
 
-
+        #region Commands
+        //Команда для создания новой заметки
         public ICommand CreateNewNote { get;}
+        //Команда закрытия текущего окна
         public ICommand CloseWinCommand { get; }
+        #endregion Commands
         public OpenNoteNameWindowViewModel()
         {
             CreateNewNote = new LyambdaCommand(CreateNoteCommand.CreateNoteExecuted, CreateNoteCommand.CreateNoteCanExecrute);

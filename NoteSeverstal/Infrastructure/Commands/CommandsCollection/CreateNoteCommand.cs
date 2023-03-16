@@ -1,11 +1,7 @@
-﻿using Aspose.Words;
-using NoteSeverstal.Models;
+﻿using NoteSeverstal.Models;
 using NoteSeverstal.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 
 namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
@@ -16,7 +12,6 @@ namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
         {
             const string MyDir = @"../../Models/NoteFiles/";
             const string jsonListDir = @"../../Models/NoteList.json";
-            var doc = new Document();
             var note1 = new Note 
             {
                 NoteFileName = OpenNoteNameWindowViewModel.NoteNameFor,
@@ -36,7 +31,8 @@ namespace NoteSeverstal.Infrastructure.Commands.CommandsCollection
             }
             Notes.Add(note1);
             JsonCustomer.Serialization(Notes, jsonListDir);
-            doc.Save(MyDir + $"{OpenNoteNameWindowViewModel.NoteNameFor}.docx");
+            File.WriteAllText(MyDir + $"{OpenNoteNameWindowViewModel.NoteNameFor}.docx", "");
+            MainWindowViewModel.AddNoteDel();
         }
 
 
